@@ -442,6 +442,12 @@ const Index = () => {
               className="w-full h-full object-cover cursor-pointer"
               onClick={() => setIsModalOpen(false)}
             />
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 px-6 py-3 bg-black/70 rounded-full backdrop-blur-sm">
+              <p className="text-white text-sm flex items-center gap-2">
+                <Icon name="MousePointerClick" size={16} />
+                Нажмите на фото для закрытия
+              </p>
+            </div>
           </div>
         </DialogContent>
       </Dialog>
