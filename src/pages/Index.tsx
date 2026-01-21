@@ -442,14 +442,6 @@ const Index = () => {
               className="w-full h-full object-cover cursor-pointer"
               onClick={() => setIsModalOpen(false)}
             />
-            <Button
-              variant="ghost"
-              size="icon"
-              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white"
-              onClick={() => setIsModalOpen(false)}
-            >
-              <Icon name="X" size={24} />
-            </Button>
           </div>
         </DialogContent>
       </Dialog>
