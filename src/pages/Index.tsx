@@ -314,16 +314,10 @@ const Index = () => {
                 </p>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
-                <Button size="lg" variant="outline" className="text-lg py-6">
-                  <Icon name="Send" className="mr-2" size={20} />
-                  Отправить заявку
-                </Button>
-                <Button size="lg" className="text-lg py-6 bg-primary hover:bg-primary/90">
-                  <Icon name="Smartphone" className="mr-2" size={20} />
-                  Оплатить СБП
-                </Button>
-              </div>
+              <Button size="lg" className="w-full text-lg py-6 bg-primary hover:bg-primary/90">
+                <Icon name="Smartphone" className="mr-2" size={20} />
+                Оплатить через СБП
+              </Button>
             </CardContent>
           </Card>
         </div>
