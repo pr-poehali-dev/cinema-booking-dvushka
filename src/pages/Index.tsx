@@ -439,7 +439,8 @@ const Index = () => {
             <img 
               src={currentHallImage} 
               alt="Cinema Hall"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover cursor-pointer"
+              onClick={() => setIsModalOpen(false)}
             />
             <Button
               variant="ghost"
