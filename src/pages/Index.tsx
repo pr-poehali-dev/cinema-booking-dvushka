@@ -307,34 +307,23 @@ const Index = () => {
 
               <Separator />
 
-              <div className="space-y-4">
-                <div className="flex items-center justify-between p-4 bg-secondary/50 rounded-lg border border-border">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center">
-                      <Icon name="Smartphone" className="text-primary" size={24} />
-                    </div>
-                    <div>
-                      <p className="font-medium">Оплата через СБП</p>
-                      <p className="text-sm text-muted-foreground">Система быстрых платежей</p>
-                    </div>
-                  </div>
-                  <Badge variant="outline" className="bg-primary/10 text-primary border-primary/30">
-                    Быстро
-                  </Badge>
-                </div>
-
-                <div className="flex items-start gap-3 p-4 bg-primary/10 rounded-lg border border-primary/20">
-                  <Icon name="Info" className="text-primary mt-1 flex-shrink-0" size={20} />
-                  <p className="text-sm text-muted-foreground">
-                    Бронирование подтверждается в течение 2 часов. Полная оплата по цене выбранного тарифа.
-                  </p>
-                </div>
+              <div className="flex items-start gap-3 p-4 bg-primary/10 rounded-lg border border-primary/20">
+                <Icon name="Info" className="text-primary mt-1 flex-shrink-0" size={20} />
+                <p className="text-sm text-muted-foreground">
+                  Бронирование подтверждается в течение 2 часов. Полная оплата по цене выбранного тарифа.
+                </p>
               </div>
 
-              <Button size="lg" className="w-full text-lg py-6 bg-primary hover:bg-primary/90">
-                <Icon name="Smartphone" className="mr-2" size={20} />
-                Оплатить через СБП
-              </Button>
+              <div className="grid grid-cols-2 gap-4">
+                <Button size="lg" variant="outline" className="text-lg py-6">
+                  <Icon name="Send" className="mr-2" size={20} />
+                  Отправить заявку
+                </Button>
+                <Button size="lg" className="text-lg py-6 bg-primary hover:bg-primary/90">
+                  <Icon name="Smartphone" className="mr-2" size={20} />
+                  Оплатить СБП
+                </Button>
+              </div>
             </CardContent>
           </Card>
         </div>
