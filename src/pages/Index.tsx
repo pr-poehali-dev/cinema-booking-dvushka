@@ -30,7 +30,7 @@ const Index = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentHallImage, setCurrentHallImage] = useState('');
   const [showPaymentDetails, setShowPaymentDetails] = useState(false);
-  const [cardNumber] = useState('2200 7007 1234 5678');
+  const [cardNumber] = useState('2204 3204 8765 9668');
 
   const scrollToBooking = () => {
     const bookingSection = document.getElementById('booking-section');
