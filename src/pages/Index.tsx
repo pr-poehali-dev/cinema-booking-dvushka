@@ -39,6 +39,13 @@ const Index = () => {
     }
   };
 
+  const scrollToHalls = () => {
+    const hallsSection = document.getElementById('halls-section');
+    if (hallsSection) {
+      hallsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   const halls: Hall[] = [
     {
       id: 1,
@@ -116,11 +123,20 @@ const Index = () => {
             Эксклюзивные залы, премиум сервис, романтическая обстановка.
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
-            <Button size="lg" className="text-lg px-8 py-6 bg-primary hover:bg-primary/90 text-primary-foreground">
+            <Button 
+              size="lg" 
+              className="text-lg px-8 py-6 bg-primary hover:bg-primary/90 text-primary-foreground"
+              onClick={scrollToBooking}
+            >
               <Icon name="Calendar" className="mr-2" size={24} />
               Забронировать
             </Button>
-            <Button size="lg" variant="outline" className="text-lg px-8 py-6 border-primary/50 hover:bg-primary/10">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="text-lg px-8 py-6 border-primary/50 hover:bg-primary/10"
+              onClick={scrollToHalls}
+            >
               <Icon name="Film" className="mr-2" size={24} />
               Наши залы
             </Button>
@@ -128,7 +144,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="py-24 px-6">
+      <section id="halls-section" className="py-24 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-5xl md:text-6xl font-cormorant font-bold mb-6">Наши залы</h2>
