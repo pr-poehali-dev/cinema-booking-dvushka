@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import Icon from '@/components/ui/icon';
 
 interface Hall {
@@ -26,13 +27,15 @@ interface Tariff {
 const Index = () => {
   const [selectedHall, setSelectedHall] = useState<number | null>(null);
   const [selectedTariff, setSelectedTariff] = useState<number | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentHallImage, setCurrentHallImage] = useState('');
 
   const halls: Hall[] = [
     {
       id: 1,
       name: 'Royal Suite',
       description: 'Роскошный зал с бархатными креслами и атмосферным освещением',
-      image: 'https://cdn.poehali.dev/projects/af38615c-e70a-4631-893f-e88943b7b081/files/078dc65f-8a0b-454a-b674-3d7c07910a37.jpg',
+      image: 'https://cdn.poehali.dev/projects/af38615c-e70a-4631-893f-e88943b7b081/files/9c29c8eb-dd17-4ebf-8a99-4b0d3b8c2afe.jpg',
       capacity: '2 персоны',
       features: ['Премиум кресла', 'Ambient освещение', 'Dolby Atmos']
     },
@@ -133,7 +136,11 @@ const Index = () => {
                   selectedHall === hall.id ? 'border-primary shadow-2xl shadow-primary/20' : 'border-border'
                 }`}
                 style={{ animationDelay: `${index * 0.1}s` }}
-                onClick={() => setSelectedHall(hall.id)}
+                onClick={() => {
+                  setSelectedHall(hall.id);
+                  setCurrentHallImage(hall.image);
+                  setIsModalOpen(true);
+                }}
               >
                 <div className="relative h-64 overflow-hidden">
                   <img 
@@ -345,6 +352,31 @@ const Index = () => {
           </div>
         </div>
       </footer>
+
+      <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+        <DialogContent className="max-w-6xl w-[95vw] h-[90vh] p-0 overflow-hidden">
+          <DialogHeader className="absolute top-0 left-0 right-0 z-10 bg-gradient-to-b from-black/80 to-transparent p-6">
+            <DialogTitle className="text-2xl font-cormorant text-white">
+              {halls.find(h => h.id === selectedHall)?.name}
+            </DialogTitle>
+          </DialogHeader>
+          <div className="relative w-full h-full">
+            <img 
+              src={currentHallImage} 
+              alt="Cinema Hall"
+              className="w-full h-full object-cover"
+            />
+            <Button
+              variant="ghost"
+              size="icon"
+              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white"
+              onClick={() => setIsModalOpen(false)}
+            >
+              <Icon name="X" size={24} />
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
