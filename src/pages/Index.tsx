@@ -29,6 +29,8 @@ const Index = () => {
   const [selectedTariff, setSelectedTariff] = useState<number | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentHallImage, setCurrentHallImage] = useState('');
+  const [showPaymentDetails, setShowPaymentDetails] = useState(false);
+  const [cardNumber] = useState('2200 7007 1234 5678');
 
   const scrollToBooking = () => {
     const bookingSection = document.getElementById('booking-section');
@@ -314,10 +316,56 @@ const Index = () => {
                 </p>
               </div>
 
-              <Button size="lg" className="w-full text-lg py-6 bg-primary hover:bg-primary/90">
-                <Icon name="Smartphone" className="mr-2" size={20} />
-                Оплатить через СБП
-              </Button>
+              {!showPaymentDetails ? (
+                <Button 
+                  size="lg" 
+                  className="w-full text-lg py-6 bg-primary hover:bg-primary/90"
+                  onClick={() => setShowPaymentDetails(true)}
+                >
+                  <Icon name="CreditCard" className="mr-2" size={20} />
+                  Перейти к оплате
+                </Button>
+              ) : (
+                <div className="space-y-4">
+                  <div className="p-6 bg-gradient-to-br from-primary/20 to-accent/20 rounded-xl border-2 border-primary/30">
+                    <div className="text-center space-y-4">
+                      <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/20 rounded-full mb-2">
+                        <Icon name="CreditCard" className="text-primary" size={32} />
+                      </div>
+                      <div>
+                        <p className="text-sm text-muted-foreground mb-2">Переведите {tariffs.find(t => t.id === selectedTariff)?.price || 'сумму'} на карту:</p>
+                        <div className="flex items-center justify-center gap-3 p-4 bg-card rounded-lg border border-border">
+                          <p className="text-3xl font-bold font-mono tracking-wider">{cardNumber}</p>
+                          <Button
+                            size="sm"
+                            variant="ghost"
+                            onClick={() => {
+                              navigator.clipboard.writeText(cardNumber.replace(/\s/g, ''));
+                            }}
+                          >
+                            <Icon name="Copy" size={18} />
+                          </Button>
+                        </div>
+                        <p className="text-sm text-muted-foreground mt-3">Получатель: Иван Иванов</p>
+                      </div>
+                      <Separator />
+                      <div className="flex items-start gap-2 text-sm text-muted-foreground">
+                        <Icon name="Info" size={16} className="mt-0.5 flex-shrink-0" />
+                        <p>После оплаты мы свяжемся с вами в течение 2 часов для подтверждения бронирования</p>
+                      </div>
+                    </div>
+                  </div>
+                  <Button 
+                    size="lg" 
+                    variant="outline"
+                    className="w-full text-lg py-6"
+                    onClick={() => setShowPaymentDetails(false)}
+                  >
+                    <Icon name="ArrowLeft" className="mr-2" size={20} />
+                    Назад
+                  </Button>
+                </div>
+              )}
             </CardContent>
           </Card>
         </div>
