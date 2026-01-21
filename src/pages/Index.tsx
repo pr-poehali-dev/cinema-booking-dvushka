@@ -310,7 +310,7 @@ const Index = () => {
               <div className="flex items-start gap-3 p-4 bg-primary/10 rounded-lg border border-primary/20">
                 <Icon name="Info" className="text-primary mt-1 flex-shrink-0" size={20} />
                 <p className="text-sm text-muted-foreground">
-                  Бронирование подтверждается в течение 2 часов. Предоплата 30% от выбранного тарифа.
+                  Бронирование подтверждается в течение 2 часов. Полная оплата по цене выбранного тарифа.
                 </p>
               </div>
 
