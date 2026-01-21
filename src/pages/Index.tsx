@@ -30,6 +30,13 @@ const Index = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentHallImage, setCurrentHallImage] = useState('');
 
+  const scrollToBooking = () => {
+    const bookingSection = document.getElementById('booking-section');
+    if (bookingSection) {
+      bookingSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   const halls: Hall[] = [
     {
       id: 1,
@@ -227,6 +234,10 @@ const Index = () => {
                   <Button 
                     className="w-full text-lg py-6" 
                     variant={tariff.popular ? "default" : "outline"}
+                    onClick={() => {
+                      setSelectedTariff(tariff.id);
+                      scrollToBooking();
+                    }}
                   >
                     Выбрать тариф
                   </Button>
@@ -237,7 +248,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="py-24 px-6">
+      <section id="booking-section" className="py-24 px-6">
         <div className="max-w-4xl mx-auto">
           <Card className="border-2 border-primary/50 shadow-2xl animate-scale-in">
             <CardHeader className="text-center">
