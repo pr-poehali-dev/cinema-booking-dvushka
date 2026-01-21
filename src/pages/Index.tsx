@@ -346,7 +346,7 @@ const Index = () => {
                             <Icon name="Copy" size={18} />
                           </Button>
                         </div>
-                        <p className="text-sm text-muted-foreground mt-3">Получатель: Иван Иванов</p>
+                        <p className="text-sm text-muted-foreground mt-3">Получатель: Даниил Константинович Г</p>
                       </div>
                       <Separator />
                       <div className="flex items-start gap-2 text-sm text-muted-foreground">
