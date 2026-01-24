@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -32,6 +32,26 @@ const Index = () => {
   const [currentHallImage, setCurrentHallImage] = useState('');
   const [showPaymentDetails, setShowPaymentDetails] = useState(false);
   const [cardNumber] = useState('2204 3204 8765 9668');
+  const [showAgeVerification, setShowAgeVerification] = useState(true);
+  const [ageVerified, setAgeVerified] = useState(false);
+
+  useEffect(() => {
+    const verified = localStorage.getItem('ageVerified');
+    if (verified === 'true') {
+      setShowAgeVerification(false);
+      setAgeVerified(true);
+    }
+  }, []);
+
+  const handleAgeConfirm = () => {
+    localStorage.setItem('ageVerified', 'true');
+    setShowAgeVerification(false);
+    setAgeVerified(true);
+  };
+
+  const handleAgeDecline = () => {
+    window.location.href = 'https://www.google.com';
+  };
 
   const scrollToBooking = () => {
     const bookingSection = document.getElementById('booking-section');
@@ -103,7 +123,50 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background via-background to-secondary/20">
+    <>
+      <Dialog open={showAgeVerification} onOpenChange={() => {}}>
+        <DialogContent className="max-w-md" onPointerDownOutside={(e) => e.preventDefault()} onEscapeKeyDown={(e) => e.preventDefault()}>
+          <DialogHeader>
+            <DialogTitle className="text-3xl font-cormorant text-center mb-4">
+              Подтверждение возраста
+            </DialogTitle>
+          </DialogHeader>
+          <div className="space-y-6">
+            <div className="text-center space-y-3">
+              <div className="inline-flex items-center justify-center w-20 h-20 bg-primary/10 rounded-full mb-4">
+                <Icon name="ShieldCheck" className="text-primary" size={40} />
+              </div>
+              <p className="text-lg">
+                Вам исполнилось 18 лет?
+              </p>
+              <p className="text-sm text-muted-foreground">
+                Для посещения данного сайта необходимо подтверждение совершеннолетия
+              </p>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <Button 
+                size="lg" 
+                variant="outline"
+                onClick={handleAgeDecline}
+                className="w-full"
+              >
+                <Icon name="X" className="mr-2" size={20} />
+                Нет
+              </Button>
+              <Button 
+                size="lg"
+                onClick={handleAgeConfirm}
+                className="w-full bg-primary hover:bg-primary/90"
+              >
+                <Icon name="Check" className="mr-2" size={20} />
+                Да, мне есть 18
+              </Button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      <div className="min-h-screen bg-gradient-to-b from-background via-background to-secondary/20">
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-accent/20" />
         <div 
@@ -478,7 +541,8 @@ const Index = () => {
           </div>
         </DialogContent>
       </Dialog>
-    </div>
+      </div>
+    </>
   );
 };
 
