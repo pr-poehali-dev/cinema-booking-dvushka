@@ -403,12 +403,29 @@ const Index = () => {
 
       <footer className="py-12 px-6 border-t border-border">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-12 mb-8">
+          <div className="grid md:grid-cols-4 gap-12 mb-8">
             <div>
               <h3 className="text-3xl font-cormorant font-bold mb-4 text-primary">CineDuo</h3>
               <p className="text-muted-foreground">
                 Премиум кинозалы для незабываемых вечеров вдвоём
               </p>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4 text-lg">Наши адреса</h4>
+              <div className="space-y-3 text-muted-foreground">
+                <div className="flex items-start gap-2">
+                  <Icon name="MapPin" size={18} className="mt-1 flex-shrink-0" />
+                  <span>Воронеж, Московский проспект, 44В</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <Icon name="MapPin" size={18} className="mt-1 flex-shrink-0" />
+                  <span>Уфа, улица Рабкоров, 20</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <Icon name="MapPin" size={18} className="mt-1 flex-shrink-0" />
+                  <span>Тюмень, улица Куйбышева, 25</span>
+                </div>
+              </div>
             </div>
             <div>
               <h4 className="font-semibold mb-4 text-lg">Контакты</h4>
@@ -420,10 +437,6 @@ const Index = () => {
                 <div className="flex items-center gap-2">
                   <Icon name="Mail" size={18} />
                   <span>info@cineduo.ru</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Icon name="MapPin" size={18} />
-                  <span>Волгоград, ул. Мира, 18</span>
                 </div>
               </div>
             </div>
