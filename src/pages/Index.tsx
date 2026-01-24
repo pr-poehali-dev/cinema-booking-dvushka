@@ -76,25 +76,25 @@ const Index = () => {
   const tariffs: Tariff[] = [
     {
       id: 1,
-      name: 'Standart',
-      price: '5 000 ₽',
+      name: 'Романтическое свидание. Уютное место',
+      price: '4 000 ₽',
       duration: '2 часа',
-      features: ['Выбор зала', 'Попкорн и напитки', 'Базовое обслуживание']
+      features: ['Выбор зала', 'Попкорн и напитки', 'Комфортная атмосфера']
     },
     {
       id: 2,
-      name: 'Premium',
-      price: '12 000 ₽',
+      name: 'Романтическое свидание. Вечер при свечах',
+      price: '5 000 ₽',
       duration: '3 часа',
-      features: ['Любой зал', 'Шампанское и закуски', 'Персональный консьерж', 'Декор по желанию'],
+      features: ['Любой зал', 'Свечи и декор', 'Шампанское и закуски', 'Атмосферное освещение'],
       popular: true
     },
     {
       id: 3,
-      name: 'Romantic Night',
-      price: '18 000 ₽',
+      name: 'Романтическое свидание. Ночь под звездами',
+      price: '7 000 ₽',
       duration: '4 часа',
-      features: ['Эксклюзивный доступ', 'Ужин от шеф-повара', 'Букет цветов', 'Фотосессия в подарок', 'Трансфер']
+      features: ['Эксклюзивный доступ', 'Проекция звездного неба', 'Ужин от шеф-повара', 'Букет цветов', 'Музыкальное сопровождение']
     }
   ];
 
@@ -207,9 +207,9 @@ const Index = () => {
       <section className="py-24 px-6 bg-secondary/30">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-5xl md:text-6xl font-cormorant font-bold mb-6">Тарифы</h2>
+            <h2 className="text-5xl md:text-6xl font-cormorant font-bold mb-6">Предложения для двоих</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Выберите пакет, который создаст идеальный вечер для вас двоих
+              Выберите идеальный вариант для вашего романтического вечера
             </p>
           </div>
 
