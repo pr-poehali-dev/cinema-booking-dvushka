@@ -22,6 +22,7 @@ interface Tariff {
   duration: string;
   features: string[];
   popular?: boolean;
+  image?: string;
 }
 
 const Index = () => {
@@ -79,7 +80,8 @@ const Index = () => {
       name: 'Романтическое свидание. Уютное место',
       price: '4 000 ₽',
       duration: '2 часа',
-      features: ['Выбор зала', 'Попкорн и напитки', 'Комфортная атмосфера']
+      features: ['Выбор зала', 'Попкорн и напитки', 'Комфортная атмосфера'],
+      image: 'https://cdn.poehali.dev/projects/af38615c-e70a-4631-893f-e88943b7b081/files/cc2b0e4d-f808-4901-8d93-68e0884c5cef.jpg'
     },
     {
       id: 2,
@@ -87,14 +89,16 @@ const Index = () => {
       price: '5 000 ₽',
       duration: '3 часа',
       features: ['Любой зал', 'Свечи и декор', 'Шампанское и закуски', 'Атмосферное освещение'],
-      popular: true
+      popular: true,
+      image: 'https://cdn.poehali.dev/projects/af38615c-e70a-4631-893f-e88943b7b081/files/f2c842f1-f386-4257-9fdd-9b0214f7392e.jpg'
     },
     {
       id: 3,
       name: 'Романтическое свидание. Ночь под звездами',
       price: '7 000 ₽',
       duration: '4 часа',
-      features: ['Эксклюзивный доступ', 'Проекция звездного неба', 'Ужин от шеф-повара', 'Букет цветов', 'Музыкальное сопровождение']
+      features: ['Эксклюзивный доступ', 'Проекция звездного неба', 'Ужин от шеф-повара', 'Букет цветов', 'Музыкальное сопровождение'],
+      image: 'https://cdn.poehali.dev/projects/af38615c-e70a-4631-893f-e88943b7b081/files/6b7317c6-53e4-4797-80d3-5c2869394081.jpg'
     }
   ];
 
@@ -217,22 +221,32 @@ const Index = () => {
             {tariffs.map((tariff, index) => (
               <Card 
                 key={tariff.id}
-                className={`relative cursor-pointer transition-all duration-300 hover:scale-105 border-2 animate-scale-in ${
+                className={`relative cursor-pointer transition-all duration-300 hover:scale-105 border-2 animate-scale-in overflow-hidden ${
                   selectedTariff === tariff.id ? 'border-primary shadow-2xl shadow-primary/20' : 'border-border'
                 } ${tariff.popular ? 'md:scale-110 border-accent shadow-xl' : ''}`}
                 style={{ animationDelay: `${index * 0.1}s` }}
                 onClick={() => setSelectedTariff(tariff.id)}
               >
                 {tariff.popular && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
                     <Badge className="text-sm px-6 py-2 bg-accent text-accent-foreground shadow-lg">
                       <Icon name="Crown" className="mr-1" size={16} />
                       Популярный
                     </Badge>
                   </div>
                 )}
+                {tariff.image && (
+                  <div className="relative h-56 overflow-hidden">
+                    <img 
+                      src={tariff.image} 
+                      alt={tariff.name}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-card via-card/70 to-transparent" />
+                  </div>
+                )}
                 <CardHeader className="text-center pb-8">
-                  <CardTitle className="text-4xl font-cormorant mb-2">{tariff.name}</CardTitle>
+                  <CardTitle className="text-3xl font-cormorant mb-2">{tariff.name}</CardTitle>
                   <div className="text-5xl font-bold text-primary my-4">{tariff.price}</div>
                   <CardDescription className="text-lg">
                     <Icon name="Clock" className="inline mr-2" size={18} />
